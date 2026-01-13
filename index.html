@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AntiGravity</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+
+    <main class="presentation-container">
+
+        <!-- Slide 1: -->
+        <section class="slide active" id="slide-1">
+            <div class="content-wrapper">
+                <h1 class="main-title">¿Rallarme yo?<br><span class="highlight">¡Que se ralle el silicio!</span>
+                </h1>
+                <p class="subtitle">Casos de uso de AntiGravity</p>
+            </div>
+            <div class="floating-element orb"></div>
+        </section>
+
+        <!-- Slide 2: Auditoría Integral -->
+        <section class="slide" id="slide-2">
+            <div class="content-wrapper">
+                <h2>Auditoría Integral</h2>
+                <h3>Análisis profundo del proyecto</h3>
+                <ul class="benefit-list">
+                    <li onclick="window.location.href='pages/auditoria_seguridad.html'">
+                        <span class="icon">🛡️</span>
+                        <div class="text">
+                            <strong>Auditoría de seguridad</strong>
+                            <p>Detección de vulnerabilidades y riesgos</p>
+                        </div>
+                    </li>
+                    <li onclick="window.location.href='pages/auditoria_codigo.html'">
+                        <span class="icon">📜</span>
+                        <div class="text">
+                            <strong>Auditoría de código</strong>
+                            <p>Revisión exhaustiva y cumplimiento de estándares</p>
+                        </div>
+                    </li>
+                    <li onclick="window.location.href='pages/profiling.html'">
+                        <span class="icon">📊</span>
+                        <div class="text">
+                            <strong>Profiling</strong>
+                            <p>Análisis de rendimiento y cuellos de botella</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Slide 3: Optimización y Calidad -->
+        <section class="slide" id="slide-3">
+            <div class="content-wrapper">
+                <h2>Optimización y Calidad</h2>
+                <h3>Excelencia técnica automatizada</h3>
+                <ul class="benefit-list">
+                    <li onclick="window.location.href='pages/refactorizacion.html'">
+                        <span class="icon">♻️</span>
+                        <div class="text">
+                            <strong>Refactorización</strong>
+                            <p>Eliminación de código duplicado y deuda técnica</p>
+                        </div>
+                    </li>
+                    <li onclick="window.location.href='pages/tests.html'">
+                        <span class="icon">✅</span>
+                        <div class="text">
+                            <strong>Tests</strong>
+                            <p>Generación y ejecución de pruebas automáticas</p>
+                        </div>
+                    </li>
+                    <li onclick="window.location.href='pages/debug_inteligente.html'">
+                        <span class="icon">🐛</span>
+                        <div class="text">
+                            <strong>Debug Inteligente</strong>
+                            <p>Diagnóstico y corrección proactiva de errores</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Slide 4: Conocimiento y Expansión -->
+        <section class="slide" id="slide-4">
+            <div class="content-wrapper">
+                <h2>Conocimiento y Expansión</h2>
+                <h3>Potenciando al equipo</h3>
+                <ul class="benefit-list">
+                    <li onclick="window.location.href='pages/documentacion.html'">
+                        <span class="icon">📝</span>
+                        <div class="text">
+                            <strong>Documentación</strong>
+                            <p>Markdown, Excalidraw, Infografías automáticas</p>
+                        </div>
+                    </li>
+                    <li onclick="window.location.href='pages/traducciones.html'">
+                        <span class="icon">🌐</span>
+                        <div class="text">
+                            <strong>Traducciones</strong>
+                            <p>Internalización y localización de contenidos</p>
+                        </div>
+                    </li>
+                    <li onclick="window.location.href='pages/onboarding.html'">
+                        <span class="icon">👋</span>
+                        <div class="text">
+                            <strong>Onboarding</strong>
+                            <p>Aceleración de la curva de aprendizaje</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Slide 5: Future -->
+        <section class="slide" id="slide-5">
+            <div class="content-wrapper">
+                <h2 class="final-title">Piensa antes de hacer nada</h2>
+                <p class="final-text">¿Puedo ayudarme con la IA?</p>
+            </div>
+            <div class="floating-element satellite"></div>
+        </section>
+
+    </main>
+
+    <div class="navigation-controls">
+        <button id="prev-btn" class="nav-btn" aria-label="Previous Slide">&#8592;</button>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <button id="next-btn" class="nav-btn" aria-label="Next Slide">&#8594;</button>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

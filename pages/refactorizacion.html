@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AntiGravity - Refactorización</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .detail-container {
+            padding: 4rem;
+            max-width: 900px;
+            margin: 2rem auto;
+            background: rgba(11, 13, 23, 0.85);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow-y: auto;
+            max-height: 90vh;
+            color: #ccc;
+        }
+
+        .prompt-box {
+            background: rgba(142, 68, 173, 0.1);
+            padding: 1.5rem;
+            border-left: 4px solid #8e44ad;
+            margin-bottom: 2rem;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+            color: #e0e0e0;
+        }
+
+        .response-box {
+            line-height: 1.8;
+            color: #ddd;
+        }
+
+        .response-box h3 {
+            color: var(--accent-glow);
+            font-size: 1.4rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--accent-glow);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .back-btn:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #fff 0%, var(--accent-glow) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--accent-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+            color: #ddd;
+        }
+
+        th,
+        td {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.75rem;
+            text-align: left;
+        }
+
+        th {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--accent-glow);
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+
+    <div class="detail-container">
+        <a href="../index.html?slide=2" class="back-btn">← </a>
+        <h1>Refactorización</h1>
+
+        <h2>Meta-prompt</h2>
+        <div class="prompt-box">dame un prompt para refactorizar este módulo para hacerlo más mantenible</div>
+
+        <h2>Prompt</h2>
+        <div class="response-box">
+            <p>"Actúa como un **Experto en Refactorización**. Analiza el siguiente código e identifica oportunidades
+                para mejorar su estructura sin alterar su comportamiento externo (Refactoring)."</p>
+
+            <p>Aplica las siguientes técnicas:</p>
+            <ul>
+                <li><strong>Extract Method:</strong> Si una función hace más de una cosa, divídela.</li>
+                <li><strong>Eliminar Código Muerto:</strong> Borra variables o funciones que no se usan.</li>
+                <li><strong>Simplify Conditional Logic:</strong> Usa 'Guard Clauses' o polimorfismo en lugar de switches
+                    largos.</li>
+                <li><strong>Magic Numbers:</strong> Reemplaza números o strings literales por constantes con nombre.
+                </li>
+            </ul>
+
+            <h3>Estrategia de Refactorización</h3>
+            <p>Propón los cambios en pasos incrementales:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Paso</th>
+                        <th>Acción</th>
+                        <th>Beneficio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Extraer validación de usuario a `validateUser()`</td>
+                        <td>Mejora la legibilidad de la función principal.</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Crear clase `OrderProcessor`</td>
+                        <td>Encapsula la lógica relacionada con pedidos (Cohesión alta).</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Usar `map` en lugar de `for` loop</td>
+                        <td>Estilo más funcional y declarativo.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Prompts Avanzados</h3>
+            <ul>
+                <li><strong>"Deuda Técnica":</strong> "Identifica las partes del código que son difíciles de entender o
+                    modificar y explica por qué (Code Smells)."</li>
+                <li><strong>"Desacoplamiento":</strong> "Sugiere cómo invertir dependencias para hacer este módulo más
+                    testeaable."</li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

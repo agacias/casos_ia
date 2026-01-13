@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AntiGravity - Auditoría de Seguridad</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .detail-container {
+            padding: 4rem;
+            max-width: 900px;
+            margin: 2rem auto;
+            background: rgba(11, 13, 23, 0.85);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow-y: auto;
+            max-height: 90vh;
+            color: #ccc;
+        }
+
+        .prompt-box {
+            background: rgba(142, 68, 173, 0.1);
+            padding: 1.5rem;
+            border-left: 4px solid #8e44ad;
+            margin-bottom: 2rem;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+            color: #e0e0e0;
+        }
+
+        .response-box {
+            line-height: 1.8;
+            color: #ddd;
+        }
+
+        .response-box h3 {
+            color: var(--accent-glow);
+            font-size: 1.4rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--accent-glow);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .back-btn:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #fff 0%, var(--accent-glow) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--accent-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+            color: #ddd;
+        }
+
+        th,
+        td {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.75rem;
+            text-align: left;
+        }
+
+        th {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--accent-glow);
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+
+    <div class="detail-container">
+        <a href="../index.html?slide=1" class="back-btn">← </a>
+        <h1>Auditoría de Seguridad</h1>
+
+        <h2>Meta-prompt</h2>
+        <div class="prompt-box">dame un prompt para hacer un analisis de seguridad</div>
+
+        <h2>Prompt</h2>
+        <div class="response-box">
+            <p>"Actúa como un Senior Security Engineer (Pentester) especializado en auditoría de código estático (SAST).
+                Analiza este proyecto en busca de vulnerabilidades críticas basándote en el OWASP Top 10 y las mejores
+                prácticas de seguridad de 2026.</p>
+
+            <p>Por favor, enfócate en:</p>
+            <ul>
+                <li><strong>Inyecciones:</strong> Busca puntos de entrada propensos a SQL Injection, XSS, Command
+                    Injection o NoSQL Injection.</li>
+                <li><strong>Gestión de Secretos:</strong> Identifica claves de API, tokens o contraseñas 'hardcoded' o
+                    expuestas en archivos de configuración.</li>
+                <li><strong>Autenticación y Autorización:</strong> Revisa fallos en el control de acceso, sesiones
+                    inseguras o lógica de permisos débil.</li>
+                <li><strong>Fugas de Datos:</strong> Detecta si se está registrando información sensible (PII) en los
+                    logs o si se envía información innecesaria en las respuestas de la API.</li>
+                <li><strong>Configuraciones Inseguras:</strong> Revisa cabeceras HTTP, políticas de CORS y
+                    configuraciones de entorno.</li>
+            </ul>
+
+            <p><strong>Formato de salida:</strong> Presenta los hallazgos en una tabla con: Severidad (Crítica, Alta,
+                Media, Baja), Archivo:Línea, Descripción del riesgo y Código sugerido para mitigarlo."</p>
+
+            <h3>2. Prompts Específicos (Seguridad por Capas)</h3>
+            <p>Si quieres profundizar en áreas concretas, usa estas variaciones:</p>
+
+            <h4>A. Para "Limpieza" de Secretos y Variables</h4>
+            <p>"Escanea el código y los archivos de configuración en busca de cualquier cadena de texto que parezca un
+                secreto, clave privada, token JWT o credencial. Verifica también si el archivo .gitignore está
+                configurado correctamente para excluir entornos sensibles (.env, .pem, .json de credenciales)."</p>
+
+            <h4>B. Para Seguridad en el Flujo de Datos (Backend)</h4>
+            <p>"Analiza cómo se procesan las entradas del usuario desde los controladores hasta la base de datos.
+                Identifica si existe sanitización adecuada y si se están utilizando consultas parametrizadas o ORMs de
+                forma segura para evitar ataques de inyección."</p>
+
+            <h4>C. Para Auditoría de Dependencias (Supply Chain)</h4>
+            <p>"Revisa el archivo de gestión de dependencias (ej. package.json, requirements.txt, go.mod). Identifica
+                librerías con vulnerabilidades conocidas o versiones obsoletas. Sugiere actualizaciones seguras y evalúa
+                el riesgo de ataques de confusión de dependencia."</p>
+
+            <h3>3. Visualización del Proceso de Seguridad</h3>
+            <p>Un análisis de seguridad robusto con IA no solo encuentra errores, sino que ayuda a implementar un ciclo
+                de vida de desarrollo seguro (SDLC).</p>
+
+            <h3>4. Tabla de Clasificación de Riesgos (Output sugerido)</h3>
+            <p>Puedes pedirle a la IA que use este formato para que los resultados sean procesables por tu equipo:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Vulnerabilidad</th>
+                        <th>Ubicación</th>
+                        <th>Impacto</th>
+                        <th>Recomendación</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>SQL Injection</td>
+                        <td>db/users.js:L45</td>
+                        <td>Crítico: Acceso total a la DB</td>
+                        <td>Usar Prepared Statements.</td>
+                    </tr>
+                    <tr>
+                        <td>Sensitive Data Leak</td>
+                        <td>utils/logger.js:L12</td>
+                        <td>Medio: Exposición de PII</td>
+                        <td>Enmascarar el email en logs.</td>
+                    </tr>
+                    <tr>
+                        <td>Missing CSRF</td>
+                        <td>routes/auth.js</td>
+                        <td>Alto: Secuestro de sesión</td>
+                        <td>Implementar tokens CSRF.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Consejos para un mejor resultado:</h3>
+            <ul>
+                <li><strong>Contexto del Framework:</strong> Añade al inicio del prompt: "Este es un proyecto de
+                    [Node.js/Django/Spring Boot]". La IA buscará patrones de ataque específicos de esa tecnología.</li>
+                <li><strong>Pide el "Exploit" (Opcional):</strong> Si no entiendes el riesgo, dile: "Explícame cómo un
+                    atacante podría explotar esta vulnerabilidad en este código específico". Esto es excelente para el
+                    onboarding de desarrolladores junior.</li>
+                <li><strong>Modo Paranoico:</strong> Puedes añadir: "Sé extremadamente riguroso, incluso con las
+                    vulnerabilidades teóricas o de baja probabilidad".</li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

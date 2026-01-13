@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AntiGravity - Auditoría de Código</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .detail-container {
+            padding: 4rem;
+            max-width: 900px;
+            margin: 2rem auto;
+            background: rgba(11, 13, 23, 0.85);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow-y: auto;
+            max-height: 90vh;
+            color: #ccc;
+        }
+
+        .prompt-box {
+            background: rgba(142, 68, 173, 0.1);
+            padding: 1.5rem;
+            border-left: 4px solid #8e44ad;
+            margin-bottom: 2rem;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+            color: #e0e0e0;
+        }
+
+        .response-box {
+            line-height: 1.8;
+            color: #ddd;
+        }
+
+        .response-box h3 {
+            color: var(--accent-glow);
+            font-size: 1.4rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--accent-glow);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .back-btn:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #fff 0%, var(--accent-glow) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--accent-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+            color: #ddd;
+        }
+
+        th,
+        td {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.75rem;
+            text-align: left;
+        }
+
+        th {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--accent-glow);
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+
+    <div class="detail-container">
+        <a href="../index.html?slide=1" class="back-btn">← </a>
+        <h1>Auditoría de Código</h1>
+
+        <h2>Meta-prompt</h2>
+        <div class="prompt-box">dame un prompt para hacer una revisión de código exhaustiva</div>
+
+        <h2>Prompt</h2>
+        <div class="response-box">
+            <p>"Actúa como un **Principal Software Engineer** obsesionado con la **calidad de código**. Realiza una Code
+                Review detallada del siguiente fragmento o archivo. Tu objetivo es asegurar que el código sea limpio,
+                mantenible y siga los principios SOLID."</p>
+
+            <p>Evalúa el código bajo los siguientes criterios:</p>
+            <ul>
+                <li><strong>Legibilidad y Naming:</strong> ¿Las variables y funciones tienen nombres descriptivos? ¿El
+                    código es autodocumentado?</li>
+                <li><strong>Complejidad:</strong> Identifica funciones demasiado largas o complejas (Complejidad
+                    Ciclomática alta).</li>
+                <li><strong>DRY (Don't Repeat Yourself):</strong> Detecta lógica duplicada.</li>
+                <li><strong>Mejores Prácticas:</strong> Verifica el uso correcto de patrones de diseño y características
+                    modernas del lenguaje.</li>
+                <li><strong>Manejo de Errores:</strong> Comprueba que las excepciones se capturan y manejan
+                    adecuadamente.</li>
+            </ul>
+
+            <h3>Ejemplo de Output Estructurado</h3>
+            <p>Pide a la IA que estructure la revisión así:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Categoría</th>
+                        <th>Ubicación</th>
+                        <th>Sugerencia</th>
+                        <th>Severidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Naming</td>
+                        <td>auth.js:L23</td>
+                        <td>Renombrar `x` a `userToken` para mayor claridad.</td>
+                        <td>Baja</td>
+                    </tr>
+                    <tr>
+                        <td>DRY</td>
+                        <td>utils.js:L45-60</td>
+                        <td>Esta lógica de formateo de fechas se repite en 3 archivos. Extraer a helper `formatDate()`.
+                        </td>
+                        <td>Media</td>
+                    </tr>
+                    <tr>
+                        <td>Error Handling</td>
+                        <td>api.js:L10</td>
+                        <td>El bloque try/catch está vacío. Loggear el error o relanzarlo.</td>
+                        <td>Alta</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Prompts Adicionales</h3>
+            <ul>
+                <li><strong>"Moderniza este código":</strong> "Reescribe este código 'legacy' utilizando las
+                    características más nuevas de [Lenguaje, ej. ES6+, Python 3.12]."</li>
+                <li><strong>"Optimiza la legibilidad":</strong> "Simplifica las condicionales anidadas (Guard Clauses) y
+                    extrae subfunciones para que este método se lea como prosa."</li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

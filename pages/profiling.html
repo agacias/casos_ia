@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AntiGravity - Profiling</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .detail-container {
+            padding: 4rem;
+            max-width: 900px;
+            margin: 2rem auto;
+            background: rgba(11, 13, 23, 0.85);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow-y: auto;
+            max-height: 90vh;
+            color: #ccc;
+        }
+
+        .prompt-box {
+            background: rgba(142, 68, 173, 0.1);
+            padding: 1.5rem;
+            border-left: 4px solid #8e44ad;
+            margin-bottom: 2rem;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+            color: #e0e0e0;
+        }
+
+        .response-box {
+            line-height: 1.8;
+            color: #ddd;
+        }
+
+        .response-box h3 {
+            color: var(--accent-glow);
+            font-size: 1.4rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--accent-glow);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .back-btn:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #fff 0%, var(--accent-glow) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--accent-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+            color: #ddd;
+        }
+
+        th,
+        td {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.75rem;
+            text-align: left;
+        }
+
+        th {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--accent-glow);
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+
+    <div class="detail-container">
+        <a href="../index.html?slide=1" class="back-btn">← </a>
+        <h1>Profiling (Perfilado)</h1>
+
+        <h2>Meta-prompt</h2>
+        <div class="prompt-box">dame un prompt para hacer profiling de mi código</div>
+
+        <h2>Prompt</h2>
+        <div class="response-box">
+            <p>"Actúa como un **Principal Software Engineer** experto en **Performance Optimization**. Realiza un
+                análisis de rendimiento estático del siguiente código."</p>
+
+            <p>Enfócate en identificar:</p>
+            <ul>
+                <li><strong>Cuellos de Botella (Bottlenecks):</strong> Algoritmos con complejidad O(n^2) o superior
+                    innecesaria.</li>
+                <li><strong>Problemas de Memoria:</strong> Fugas de memoria, creación excesiva de objetos o referencias
+                    circulares.</li>
+                <li><strong>Consultas Ineficientes:</strong> Problemas de N+1 en bases de datos o llamadas bloqueantes a
+                    APIs.</li>
+                <li><strong>Bloqueos de Hilo Principal:</strong> Operaciones intensivas que congelan la UI (en JS) o el
+                    Event Loop.</li>
+            </ul>
+
+            <h3>Tabla de Hallazgos de Rendimiento</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ubicación</th>
+                        <th>Problema</th>
+                        <th>Impacto</th>
+                        <th>Solución Sugerida</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>`processData.js:L45`</td>
+                        <td>Loop anidado O(n^2)</td>
+                        <td>Alto (CPU)</td>
+                        <td>Usar un Map para reducir a O(n).</td>
+                    </tr>
+                    <tr>
+                        <td>`api/users.js:L12`</td>
+                        <td>Query N+1</td>
+                        <td>Alto (DB/Red)</td>
+                        <td>Usar `.populate()` o `JOIN` en la query principal.</td>
+                    </tr>
+                    <tr>
+                        <td>`imageUtils.js:L80`</td>
+                        <td>Render re-calculado</td>
+                        <td>Medio (UI)</td>
+                        <td>Memoizar el resultado con `useMemo`.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Prompts Avanzados</h3>
+            <ul>
+                <li><strong>"Análisis de Complejidad":</strong> "Calcula la complejidad ciclomática de esta función y
+                    sugiere cómo redicirla para simplificar el testing."</li>
+                <li><strong>"Optimización de SQL":</strong> "Revisa esta consulta SQL y sugiere índices que debería
+                    agregar a la base de datos para acelerarla."</li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

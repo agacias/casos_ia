@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AntiGravity - Onboarding</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .detail-container {
+            padding: 4rem;
+            max-width: 900px;
+            margin: 2rem auto;
+            background: rgba(11, 13, 23, 0.85);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow-y: auto;
+            max-height: 90vh;
+            color: #ccc;
+        }
+
+        .prompt-box {
+            background: rgba(142, 68, 173, 0.1);
+            padding: 1.5rem;
+            border-left: 4px solid #8e44ad;
+            margin-bottom: 2rem;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+            color: #e0e0e0;
+        }
+
+        .response-box {
+            line-height: 1.8;
+            color: #ddd;
+        }
+
+        .response-box h3 {
+            color: var(--accent-glow);
+            font-size: 1.4rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--accent-glow);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .back-btn:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #fff 0%, var(--accent-glow) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--accent-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+            color: #ddd;
+        }
+
+        th,
+        td {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.75rem;
+            text-align: left;
+        }
+
+        th {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--accent-glow);
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+
+    <div class="detail-container">
+        <a href="../index.html?slide=3" class="back-btn">← </a>
+        <h1>Onboarding Acelerado</h1>
+
+        <h2>Meta-prompt</h2>
+        <div class="prompt-box">dame un prompt para hacer onboarding en este proyecto y entender su arquitectura
+            rápidamente</div>
+
+        <h2>Prompt</h2>
+        <div class="response-box">
+            <p>"Actúa como un **Tech Lead** empático y didáctico. Tu objetivo es ayudar a un nuevo desarrollador a
+                entender la arquitectura del proyecto y a configurar su entorno local en menos de 15 minutos."</p>
+
+            <p>Genera un documento que cubra:</p>
+            <ul>
+                <li><strong>Big Picture:</strong> Diagrama de alto nivel de los módulos y cómo se comunican.</li>
+                <li><strong>Tech Stack:</strong> Lista de tecnologías clave (Frontend, Backend, DB) y por qué se
+                    eligieron.</li>
+                <li><strong>Directorios Clave:</strong> Dónde encontrar la lógica de negocio, las vistas, los tests,
+                    etc.</li>
+                <li><strong>Flujo de Trabajo:</strong> Cómo correr el servidor localmente, cómo ejecutar los tests y
+                    cómo hacer un deploy.</li>
+            </ul>
+
+            <h3>Guía de Inicio Rápido (Quickstart)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Paso</th>
+                        <th>Comando</th>
+                        <th>Descripción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1. Instalar dependencias</td>
+                        <td>`npm install`</td>
+                        <td>Descarga las librerías necesarias.</td>
+                    </tr>
+                    <tr>
+                        <td>2. Configurar entorno</td>
+                        <td>`cp .env.example .env`</td>
+                        <td>Crea las variables de entorno locales.</td>
+                    </tr>
+                    <tr>
+                        <td>3. Iniciar servidor</td>
+                        <td>`npm run dev`</td>
+                        <td>Levanta la app en `http://localhost:3000`.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Prompts Adicionales</h3>
+            <ul>
+                <li><strong>"Glosario del Dominio":</strong> "Crea un diccionario de términos específicos del negocio
+                    que se usan en este código (Ubiquitous Language)."</li>
+                <li><strong>"Mapa de Dependencias":</strong> "Lista las dependencias externas más críticas y explica qué
+                    rol cumple cada una."</li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
