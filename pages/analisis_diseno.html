@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AntiGravity - Análisis de Diseño</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .detail-container {
+            padding: 4rem;
+            max-width: 900px;
+            margin: 2rem auto;
+            background: rgba(11, 13, 23, 0.85);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow-y: auto;
+            max-height: 90vh;
+            color: #ccc;
+        }
+
+        .prompt-box {
+            background: rgba(142, 68, 173, 0.1);
+            padding: 1.5rem;
+            border-left: 4px solid #8e44ad;
+            margin-bottom: 2rem;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+            color: #e0e0e0;
+        }
+
+        .response-box {
+            line-height: 1.8;
+            color: #ddd;
+        }
+
+        .response-box h3 {
+            color: var(--accent-glow);
+            font-size: 1.4rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--accent-glow);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .back-btn:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #fff 0%, var(--accent-glow) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--accent-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+            color: #ddd;
+        }
+
+        th,
+        td {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.75rem;
+            text-align: left;
+        }
+
+        th {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--accent-glow);
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+
+    <div class="detail-container">
+        <a href="../index.html?slide=1" class="back-btn">← </a>
+        <h1>Análisis de Diseño</h1>
+
+        <h2>Meta-prompt</h2>
+        <div class="prompt-box">Analiza el diseño de la aplicación y sugiere cambios.</div>
+
+        <h2>Prompt</h2>
+        <div class="response-box">
+            <p>"Actúa como un **Lead Product Designer** con experiencia en **UX/UI y Accesibilidad**. Analiza visual y
+                funcionalmente la aplicación (basándote en código HTML/CSS o capturas). Tu objetivo es mejorar la
+                estética, la usabilidad y la conversión."</p>
+
+            <p>Evalúa el diseño bajo los siguientes criterios:</p>
+            <ul>
+                <li><strong>Estética y Modernidad:</strong> ¿El diseño se ve actual? ¿Uso correcto de espacios en
+                    blanco, tipografía y colores?</li>
+                <li><strong>Usabilidad (UX):</strong> ¿Es intuitiva la navegación? ¿Los call-to-action (CTA) son claros?
+                </li>
+                <li><strong>Accesibilidad (WCAG):</strong> Contraste de colores, etiquetas ARIA, tamaño de fuentes.</li>
+                <li><strong>Responsividad:</strong> Adaptación a dispositivos móviles y diferentes tamaños de pantalla.
+                </li>
+            </ul>
+
+            <h3>Ejemplo de Output Estructurado</h3>
+            <p>Estructura tus sugerencias de la siguiente manera:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Categoría</th>
+                        <th>Elemento</th>
+                        <th>Problema Detectado</th>
+                        <th>Sugerencia de Mejora</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Accesibilidad</td>
+                        <td>Botones</td>
+                        <td>Contraste bajo (gris sobre blanco).</td>
+                        <td>Aumentar el contraste o cambiar color de fondo a uno más oscuro.</td>
+                    </tr>
+                    <tr>
+                        <td>UX</td>
+                        <td>Menú Principal</td>
+                        <td>Opciones ocultas en móvil sin indicador.</td>
+                        <td>Añadir icono de menú hamburguesa visible.</td>
+                    </tr>
+                    <tr>
+                        <td>Estética</td>
+                        <td>Tipografía</td>
+                        <td>Fuente genérica (Arial).</td>
+                        <td>Usar una fuente más moderna como 'Inter' o 'Roboto'.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Prompts Adicionales</h3>
+            <ul>
+                <li><strong>"Genera un sistema de diseño":</strong> "Crea una paleta de colores y una escala tipográfica
+                    coherente para esta aplicación."</li>
+                <li><strong>"Mejora este componente":</strong> "Sugiere 3 variaciones de diseño para este 'Hero Section'
+                    que mejoren la conversión."</li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

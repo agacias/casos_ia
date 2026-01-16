@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AntiGravity - Análisis de Arquitectura</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .detail-container {
+            padding: 4rem;
+            max-width: 900px;
+            margin: 2rem auto;
+            background: rgba(11, 13, 23, 0.85);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow-y: auto;
+            max-height: 90vh;
+            color: #ccc;
+        }
+
+        .prompt-box {
+            background: rgba(142, 68, 173, 0.1);
+            padding: 1.5rem;
+            border-left: 4px solid #8e44ad;
+            margin-bottom: 2rem;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+            color: #e0e0e0;
+        }
+
+        .response-box {
+            line-height: 1.8;
+            color: #ddd;
+        }
+
+        .response-box h3 {
+            color: var(--accent-glow);
+            font-size: 1.4rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--accent-glow);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .back-btn:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #fff 0%, var(--accent-glow) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--accent-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+            color: #ddd;
+        }
+
+        th,
+        td {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.75rem;
+            text-align: left;
+        }
+
+        th {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--accent-glow);
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+
+    <div class="detail-container">
+        <a href="../index.html?slide=1" class="back-btn">← </a>
+        <h1>Análisis de Arquitectura</h1>
+
+        <h2>Meta-prompt</h2>
+        <div class="prompt-box">Analiza la arquitectura del proyecto y propón mejoras.</div>
+
+        <h2>Prompt</h2>
+        <div class="response-box">
+            <p>"Actúa como un **Senior Software Architect** con experiencia en sistemas escalables y mantenibles.
+                Analiza la estructura de directorios y la arquitectura del siguiente proyecto. Tu objetivo es mejorar la
+                modularidad, la escalabilidad y reducir el acoplamiento."</p>
+
+            <p>Evalúa la arquitectura bajo los siguientes criterios:</p>
+            <ul>
+                <li><strong>Organización de Carpetas:</strong> ¿Es lógica y consistente? (ej. Feature-based vs
+                    Type-based).</li>
+                <li><strong>Separación de Responsabilidades:</strong> ¿Se mezclan capas (UI, Lógica, Datos) en los
+                    mismos componentes?</li>
+                <li><strong>Patrones Arquitectónicos:</strong> Evalúa el uso de patrones como MVC, MVVM, Clean
+                    Architecture, etc.</li>
+                <li><strong>Dependencias:</strong> Identifica dependencias circulares o imports innecesarios.</li>
+            </ul>
+
+            <h3>Ejemplo de Output Estructurado</h3>
+            <p>Estructura tus sugerencias de la siguiente manera:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Componente/Módulo</th>
+                        <th>Problema Detectado</th>
+                        <th>Sugerencia de Arquitectura</th>
+                        <th>Beneficio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>/utils</td>
+                        <td>Archivo gigante 'helpers.js' con 5000 líneas.</td>
+                        <td>Dividir en módulos específicos: `date-utils.js`, `string-utils.js`, etc.</td>
+                        <td>Mejor mantenibilidad y testing más fácil.</td>
+                    </tr>
+                    <tr>
+                        <td>Controladores</td>
+                        <td>Lógica de negocio mezclada con lógica HTTP.</td>
+                        <td>Extraer lógica de negocio a una capa de Servicios (Service Layer).</td>
+                        <td>Desacoplamiento y testabilidad.</td>
+                    </tr>
+                    <tr>
+                        <td>Global State</td>
+                        <td>Uso excesivo de variables globales.</td>
+                        <td>Implementar un gestor de estado (Redux, Context, etc.) o inyección de dependencias.</td>
+                        <td>Control de flujo de datos predecible.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Prompts Adicionales</h3>
+            <ul>
+                <li><strong>"Propón una estructura de carpetas":</strong> "Dado que este es un proyecto
+                    [React/Django/Node], genera un árbol de directorios ideal siguiendo las mejores prácticas de la
+                    industria."</li>
+                <li><strong>"Diagrama de Arquitectura":</strong> "Genera una descripción en Mermaid JS para visualizar
+                    la relación entre estos módulos."</li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

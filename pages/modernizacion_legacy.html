@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AntiGravity - Modernización Legacy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .detail-container {
+            padding: 4rem;
+            max-width: 900px;
+            margin: 2rem auto;
+            background: rgba(11, 13, 23, 0.85);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow-y: auto;
+            max-height: 90vh;
+            color: #ccc;
+        }
+
+        .prompt-box {
+            background: rgba(142, 68, 173, 0.1);
+            padding: 1.5rem;
+            border-left: 4px solid #8e44ad;
+            margin-bottom: 2rem;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+            color: #e0e0e0;
+        }
+
+        .response-box {
+            line-height: 1.8;
+            color: #ddd;
+        }
+
+        .response-box h3 {
+            color: var(--accent-glow);
+            font-size: 1.4rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--accent-glow);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .back-btn:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #fff 0%, var(--accent-glow) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--accent-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+            color: #ddd;
+        }
+
+        th,
+        td {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.75rem;
+            text-align: left;
+        }
+
+        th {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--accent-glow);
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+
+    <div class="detail-container">
+        <a href="../index.html?slide=3" class="back-btn">← </a>
+        <h1>Modernización Legacy</h1>
+
+        <h2>Meta-prompt</h2>
+        <div class="prompt-box">Ayúdame a migrar este código de Java 8 a Java 21 o de jQuery a React.</div>
+
+        <h2>Prompt</h2>
+        <div class="response-box">
+            <p>"Actúa como un **Experto en Migraciones de Software**. Tengo un componente antiguo escrito en **jQuery**
+                y quiero migrarlo a un componente funcional de **React (con Hooks)**. Analiza la lógica y propón la
+                nueva implementación."</p>
+
+            <p>Código Legacy (jQuery):</p>
+            <pre><code style="background: rgba(0,0,0,0.3); padding: 1rem; display: block; border-radius: 6px;">$('.btn-toggle').click(function() {
+  var id = $(this).data('id');
+  $('.content-' + id).slideToggle();
+  $(this).toggleClass('active');
+});</code></pre>
+
+            <h3>Entregables</h3>
+            <ul>
+                <li><strong>Componente React:</strong> Código completo usando `useState`.</li>
+                <li><strong>Explicación:</strong> ¿Cómo se mapean los eventos de jQuery al Virtual DOM de React?</li>
+                <li><strong>Testing:</strong> Un test unitario básico con React Testing Library.</li>
+            </ul>
+
+            <h3>Ejemplo de Output Estructurado</h3>
+            <p>El código generado:</p>
+            <pre><code style="background: rgba(0,0,0,0.3); padding: 1rem; display: block; border-radius: 6px;">const ToggleComponent = ({ id, content }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    &lt;div&gt;
+      &lt;button 
+        className={`btn-toggle ${isOpen ? 'active' : ''}`}
+        onClick={() => setIsOpen(!isOpen)}
+      &gt;
+        Toggle
+      &lt;/button&gt;
+      {isOpen && &lt;div className={`content-${id}`}&gt;{content}&lt;/div&gt;}
+    &lt;/div&gt;
+  );
+};</code></pre>
+
+            <h3>Prompts Adicionales</h3>
+            <ul>
+                <li><strong>"Java Upgrade":</strong> "Analiza este código Java 7 y refactorízalo usando Streams y
+                    Lambdas de Java 8+."</li>
+                <li><strong>"Python 2 a 3":</strong> "Detecta incompatibilidades en este script de Python 2.7 y adáptalo
+                    a Python 3.12."</li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
